@@ -2,6 +2,7 @@
 //for personal project in SE course
 
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <set>
 
@@ -77,11 +78,35 @@ void printDots() {
         ++iter;
     }
 }
-int main()
+int main(int argc, char* argv[])
 {
     int n, i = 0, j = 0;
     int x1, y1, x2, y2;
     char c;
+    FILE* stream;
+    
+    if (argc == 3) {
+        if (strcmp(argv[1],"-i")==0) {
+            freopen_s(&stream,argv[2], "r", stdin);
+        }
+        else if (strcmp(argv[1],"-o")==0) {
+            freopen_s(&stream,argv[2], "w", stdout);
+        }
+    }
+    else if (argc == 5) {
+        for (i = 1;i < 5;i++) {
+            if (strcmp(argv[i],"-i")==0) {
+                freopen_s(&stream,argv[i + 1], "r", stdin);
+            }
+            else if (strcmp(argv[i] , "-o")==0) {
+                freopen_s(&stream,argv[i + 1], "w", stdout);
+            }
+        }
+    }
+    else if(argc!=1){
+        cout << "illegal command line arguments" << endl;
+    }
+
     std::cin >> n;
     while (n--) {
         std::cin >> c >> x1 >> y1 >> x2 >> y2;
