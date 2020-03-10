@@ -1,6 +1,9 @@
 # IntersectProject
 personal project for SE course
 
+作业属于 | [2020春季计算机学院软件工程(罗杰 任健)](https://edu.cnblogs.com/campus/buaa/BUAA_SE_2020_LJ)
+作业要求 | [个人项目作业](https://edu.cnblogs.com/campus/buaa/BUAA_SE_2020_LJ/homework/10429)
+
 # user guide
 -i <path to input file> 表示输入文件的路径  
 -o <path to output file> 表示输出文件的路径  
