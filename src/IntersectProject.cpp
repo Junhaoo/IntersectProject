@@ -31,9 +31,9 @@ typedef struct dot
 
     bool operator<(const struct dot& right)const
     {
-        if (this->x == right.x && this->y == right.y)
+        if (this->x == right.x && this->y == right.y)   //去重
             return false;
-        else {
+        else {                                          //降序
             if (this->y != right.y) {
                 return this->y > right.y;
             }
@@ -84,29 +84,29 @@ int main(int argc, char* argv[])
     int x1, y1, x2, y2;
     char c;
     FILE* stream;
-    
-    if (argc == 3) {
-        if (strcmp(argv[1],"-i")==0) {
-            freopen_s(&stream,argv[2], "r", stdin);
-        }
-        else if (strcmp(argv[1],"-o")==0) {
-            freopen_s(&stream,argv[2], "w", stdout);
-        }
-    }
-    else if (argc == 5) {
-        for (i = 1;i < 5;i++) {
-            if (strcmp(argv[i],"-i")==0) {
-                freopen_s(&stream,argv[i + 1], "r", stdin);
+    {
+        if (argc == 3) {
+            if (strcmp(argv[1], "-i") == 0) {
+                freopen_s(&stream, argv[2], "r", stdin);
             }
-            else if (strcmp(argv[i] , "-o")==0) {
-                freopen_s(&stream,argv[i + 1], "w", stdout);
+            else if (strcmp(argv[1], "-o") == 0) {
+                freopen_s(&stream, argv[2], "w", stdout);
             }
         }
-    }
-    else if(argc!=1){
-        cout << "illegal command line arguments" << endl;
-    }
-
+        else if (argc == 5) {
+            for (i = 1;i < 5;i++) {
+                if (strcmp(argv[i], "-i") == 0) {
+                    freopen_s(&stream, argv[i + 1], "r", stdin);
+                }
+                else if (strcmp(argv[i], "-o") == 0) {
+                    freopen_s(&stream, argv[i + 1], "w", stdout);
+                }
+            }
+        }
+        else if (argc != 1) {
+            cout << "illegal command line arguments" << endl;
+        }
+    }           //命令行参数部分       
     std::cin >> n;
     while (n--) {
         std::cin >> c >> x1 >> y1 >> x2 >> y2;
@@ -124,6 +124,6 @@ int main(int argc, char* argv[])
     }
 
     std::cout << dots.size()<< endl;   //返回set集合大小（即交点个数
-    printDots();
+    //printDots();
     return 0;
 }
